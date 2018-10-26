@@ -32,11 +32,11 @@ try:
       requests.get(domurl)
       ##Watt Paneelgroep1
       current1 = alldata['result'][0]['pv1Current']
-      domurl = 'http://'+domoticzip+':80/json.htm?type=command&param=udevice&nvalue=0&idx='+idxwatt+'&svalue='+str(current1)
+      domurl = 'http://'+domoticzip+':80/json.htm?type=command&param=udevice&nvalue=0&idx='+idxwatt1+'&svalue='+str(current1)
       requests.get(domurl)
       ##Watt Paneelgroep2
       current2 = alldata['result'][0]['pv2Current']
-      domurl = 'http://'+domoticzip+':80/json.htm?type=command&param=udevice&nvalue=0&idx='+idxwatt+'&svalue='+str(current2)
+      domurl = 'http://'+domoticzip+':80/json.htm?type=command&param=udevice&nvalue=0&idx='+idxwatt2+'&svalue='+str(current2)
       requests.get(domurl)
     except requests.exceptions.RequestException as e:
       print(e)

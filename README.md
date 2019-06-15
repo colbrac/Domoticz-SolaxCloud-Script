@@ -13,7 +13,8 @@ https://i.imgur.com/NhlCXFl.png
   myusername = '' (the username for the solax coud)
   mypassword = '' (the password for the solax cloud)
 - Create virtual sensors for the data you want to retain. (see solax.py and the screenshot for the idx's)
-  ##dummies in domoticz shortlist (number = idx in domoticz)##
+  
+  Dummies in domoticz shortlist (number = idx in domoticz)
   idxdcwatt = '27'      (dummy watt total (group1+group2))
   idxdcwatt1 = '28'     (dummy watt group1)
   idxdcwatt2 = '29'     (dummy watt group2)

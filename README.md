@@ -9,7 +9,7 @@ https://i.imgur.com/NhlCXFl.png
 ===============================================================================================================
 
 - Edit solax.py with the credentials for your domoticz installation.  
-  domoticzip = '' (the ip domitcz is using)  
+  domoticzip = '' (the ip domoticz is using)  
   myusername = '' (the username for the solax coud)  
   mypassword = '' (the password for the solax cloud)  
 - Create virtual sensors for the data you want to retain. (see solax.py and the screenshot for the idx's)  

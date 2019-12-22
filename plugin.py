@@ -29,11 +29,15 @@ mysiteurl = 'http://'+solaxsite+'/proxy//mysite/mySite'
 #login and get token and userid
 try:
   tokendata = requests.post(tokenurl).json()
-  tokenanduser= {
-    'tokenId': tokendata['result']['tokenId'],
-    'userId': tokendata['result']['userId'],
+  if not tokendata['success']:
+    print(tokendata['exception'])
+    sys.exit(1)
+  else:
+   tokenanduser= {
+     'tokenId': tokendata['result']['tokenId'],
+     'userId': tokendata['result']['userId'],
     }
-  #use token and userid to get siteid  
+  #use token and userid to get siteid
   try:
     mysitedata = requests.post(mysiteurl, data=tokenanduser).json()
     alldataurl = 'http://'+solaxsite+'/proxy//mysite/getInverterInfo?siteId='+str(mysitedata['result'][0]['siteId'])+'&tokenId='+tokendata['result']['tokenId']

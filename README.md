@@ -6,7 +6,8 @@ Make virtual sensors and add them to the script
 
 https://i.imgur.com/NhlCXFl.png
 
-===============================================================================================================
+===============================================================================
+
 
 - Edit solax.py with the credentials for your domoticz installation.  
   domoticzip = '' (the ip domoticz is using)  

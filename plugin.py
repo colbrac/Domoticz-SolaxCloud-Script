@@ -3,9 +3,10 @@
 import requests
 import sys
 
-domoticzip = '1'
-myusername = '1'
-mypassword = '1'
+##edit these entries
+domoticzip = ''
+myusername = ''
+mypassword = ''
 
 #dummies in domoticz
 idxdcwatt = '27'
@@ -22,12 +23,22 @@ idxpac3 = '35'
 idxpactot = '36'
 idxtemp = '37'
 
+##Solaxstuff do not touch!##
 solaxsite = 'www.solaxcloud.com:6080'
 tokenurl = 'http://'+solaxsite+'/proxy//login/login?password='+mypassword+'&userName='+myusername+'&userType=5'
 mysiteurl = 'http://'+solaxsite+'/proxy//mysite/mySite'
 
-#login and get token and userid
+#Login and get token and userid
 try:
+ if not myusername:
+  print ("Username is empty")
+  sys.exit(1)
+ elif not mypassword:
+  print ("Password is empty")
+  sysexit(1)
+ else:
+#  print ("You entered: ["+myusername+"]")
+#  print ("You entered: ["+mypassword+"]")
   tokendata = requests.post(tokenurl).json()
   if not tokendata['success']:
     print(tokendata['exception'])

@@ -35,7 +35,7 @@ try:
   sys.exit(1)
  elif not mypassword:
   print ("Password is empty")
-  sysexit(1)
+  sys.exit(1)
  else:
 #  print ("You entered: ["+myusername+"]")
 #  print ("You entered: ["+mypassword+"]")

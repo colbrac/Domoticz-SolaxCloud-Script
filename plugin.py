@@ -45,7 +45,7 @@ try:
      print(mysitedata['exception'])
      sys.exit(1)
     else:
-     alldataurl = 'http://'+solaxsite+'/proxy//mysite/getInverterInfo?siteId='+str(mysitedata['result'][0]['siteId'])+'&tokenId='+token$
+     alldataurl = 'http://'+solaxsite+'/proxy//mysite/getInverterInfo?siteId='+str(mysitedata['result'][0]['siteId'])+'&tokenId='+tokendata['result']['tokenId']
     #use site id and token, get the data, and post it to domoticz
     try:
       alldata = requests.post(alldataurl).json()

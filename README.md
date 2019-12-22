@@ -1,6 +1,6 @@
 # Domoticz-SolaxCloud-Plugin
 
-SolaxCloud Scraper as a cronjob.. No idea how to make a plugin for domoticz yet
+SolaxCloud Scraper as a cronjob.
 
 Make virtual sensors and add them to the script
 

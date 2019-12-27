@@ -1,4 +1,4 @@
-# Domoticz-SolaxCloud-Plugin
+# Domoticz-SolaxCloud-Script
 
 SolaxCloud Scraper as a cronjob.
 

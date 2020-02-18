@@ -2,6 +2,7 @@
 
 import requests
 import sys
+import time
 
 ##edit these entries
 domoticzip = '' # format: IP:PORT
@@ -63,6 +64,14 @@ try:
        print(mysitedata['exception'])
        sys.exit(1)
       else:
+       # Check if the latest data on the Solax Cloud server is recent. 
+       # If older than 5 minutes, do not push data to Domoticz, so no stale data is recorded in Domoticz during night time.
+       # This assumes Solax Cloud data is updated every 5 minutes and a crontab is running this script every 5 minutes as well!
+       lastupdatetime = alldata['result'][0]['lastUpdateTimes']
+       print("Last update time: %s"%lastupdatetime)
+       if time.mktime(time.strptime(lastupdatetime, '%Y-%m-%d %H:%M:%S'))-time.time()<-300: # older than 5 minutes                                                                                                        $
+           print("Last update time more than 5 minutes ago: %s"%lastupdatetime)
+           sys.exit(0)
        # Push all values to Domoticz
        for key, domidx in fields.items():
            value = alldata['result'][0][key]

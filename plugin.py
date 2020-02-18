@@ -66,6 +66,8 @@ try:
        # Push all values to Domoticz
        for key, domidx in fields.items():
            value = alldata['result'][0][key]
+           if 'Yield' in key:
+               value = "%.0f"%(1000*float(value)) # convert kWh counters to Wh
            domurl = 'http://'+domoticzip+'/json.htm?type=command&param=udevice&nvalue=0&idx={}&svalue={}'.format(domidx, value)
            requests.get(domurl)
     except requests.exceptions.RequestException as e:

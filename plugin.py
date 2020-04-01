@@ -8,6 +8,7 @@ import time
 domoticzip = '' # format: IP:PORT
 myusername = '' # for Solax site
 mypassword = '' # for Solax site
+timezonedifference_with_server = 7
 
 #dummies in domoticz, fill in the ID's as listed per Virtual sensor in Domoticz
 fields = {
@@ -69,9 +70,16 @@ try:
        # This assumes Solax Cloud data is updated every 5 minutes and a crontab is running this script every 5 minutes as well!
        lastupdatetime = alldata['result'][0]['lastUpdateTimes']
        print("Last update time: %s"%lastupdatetime)
-       if time.mktime(time.strptime(lastupdatetime, '%Y-%m-%d %H:%M:%S'))-time.time()<-300: # older than 5 minutes                                                                                                        $
+       
+       # Use lastUpdateTime for the (server local) epoch time to compare with local epoch time.
+       servertime = int(alldata['result'][0]['lastUpdateTime']/1000.)
+       currenttime = time.time()
+       time_difference = servertime-currenttime+timezonedifference_with_server*3600
+
+       if time_difference<-300: # older than 5 minutes
            print("Last update time more than 5 minutes ago: %s"%lastupdatetime)
            sys.exit(0)
+       
        # Push all values to Domoticz
        for key, domidx in fields.items():
            value = alldata['result'][0][key]
